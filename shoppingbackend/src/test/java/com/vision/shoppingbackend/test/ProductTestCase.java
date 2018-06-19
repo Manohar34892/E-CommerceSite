@@ -14,7 +14,7 @@ public class ProductTestCase {
 	private static AnnotationConfigApplicationContext context = null;
 
 	
-	private static ProductDAO productDAO;
+	private static ProductDAO productDao;
 
 	private Product product;
 
@@ -23,23 +23,23 @@ public class ProductTestCase {
 		context = new AnnotationConfigApplicationContext();
 		context.scan("com.vision.shoppingbackend");
 		context.refresh();
-		productDAO=(ProductDAO) context.getBean("ProductDAO");
+		productDao=(ProductDAO) context.getBean("productDao");
 	}
 	
 	@Test
 	public void testProductCurd() {
 		
 		product=new Product();
-		product.setName("Oppo Selife S3");
-		product.setBrand("OPPO");
-		product.setDescription("This is small description about oppo mobile");
-		product.setUnitprice(20000);
+		product.setName("iPhone 5s");
+		product.setBrand("Apple");
+		product.setDescription("This is small description about Apple mobile");
+		product.setUnitprice(25000);
 		product.setActive(true);
 		product.setCategoryid(3);
 		product.setSupplierid(3);
-		product.setQuantity(3);
+		product.setQuantity(0);
 		
-		assertEquals("Product inserted Successfuly ", true, productDAO.add(product));
+		assertEquals("Product inserted Successfuly ", true, productDao.add(product));
 		
 		product=new Product();
 		product.setName("SamSang S3");
@@ -50,7 +50,7 @@ public class ProductTestCase {
 		product.setCategoryid(3);
 		product.setSupplierid(3);
 		product.setQuantity(5);
-		assertEquals("Product inserted Successfuly ", true, productDAO.add(product));
+		assertEquals("Product inserted Successfuly ", true, productDao.add(product));
 		
 		product=new Product();
 		product.setName("SamSang S7");
@@ -61,7 +61,7 @@ public class ProductTestCase {
 		product.setCategoryid(3);
 		product.setSupplierid(2);
 		product.setQuantity(4);
-		assertEquals("Product inserted Successfuly ", true, productDAO.add(product));
+		assertEquals("Product inserted Successfuly ", true, productDao.add(product));
 		
 		product=new Product();
 		product.setName("Asus Vivo Notebook");
@@ -72,21 +72,21 @@ public class ProductTestCase {
 		product.setCategoryid(4);
 		product.setSupplierid(2);
 		product.setQuantity(4);
-		assertEquals("Product inserted Successfuly ", true, productDAO.add(product));
+		assertEquals("Product inserted Successfuly ", true, productDao.add(product));
 		
-		product= productDAO.get(2);
+		product= productDao.get(2);
 		product.setUnitprice(28000);
 		product.setPurchases(5);
 		product.setViews(150);
-		assertEquals("Product inserted Successfuly ", true, productDAO.update(product));
+		assertEquals("Product inserted Successfuly ", true, productDao.update(product));
 		
-		assertEquals("Product inserted Successfuly ", true, productDAO.delete(product));
+		assertEquals("Product inserted Successfuly ", true, productDao.delete(product));
 		
-		assertEquals("Product inserted Successfuly ", 4, productDAO.listofitem().size());
+		assertEquals("Product inserted Successfuly ", 4, productDao.listofitem().size());
 		
-		assertEquals("Product inserted Successfuly ", 3, productDAO.listActiveProducts().size());
-		assertEquals("Product inserted Successfuly ", 2, productDAO.listActiveProductsByCategory(3).size());
-		assertEquals("Product inserted Successfuly ", 3, productDAO.getLatestActiveProducts(4).size());
+		assertEquals("Product inserted Successfuly ", 3, productDao.listActiveProducts().size());
+		assertEquals("Product inserted Successfuly ", 2, productDao.listActiveProductsByCategory(3).size());
+		assertEquals("Product inserted Successfuly ", 3, productDao.getLatestActiveProducts(4).size());
 		
 	}
 }

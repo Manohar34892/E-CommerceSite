@@ -63,7 +63,7 @@ ul.breadcrumb li {
 }
 img.img-responsive{
 	height: 400px;
-	width: 400px;
+	width: 350px;
 	
 }
 h3{
@@ -75,3 +75,6 @@ h4{
 p{
 	color: green;
 }
+.jumbotron{
+	align-content: center;
+	}

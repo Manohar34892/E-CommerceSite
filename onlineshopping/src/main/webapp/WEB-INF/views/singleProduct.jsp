@@ -24,19 +24,38 @@
 			<hr />
 			<p>${product.description}</p>
 			<hr />
-			<h4>
-				Price:<strong> &#8377; ${product.unitprice}
-			</h4>
-			<h6>Qty. Available : ${product.quantity}</h6>
-			<hr />
+			<h4>Price: &#8377; ${product.unitprice} /-</h4>
+			<c:choose>
 
-			<a href=" ${contextRoot}/cart/add/${product.id}/product"
-				class="btn btn-success"><span
-				class="glyphicon glyphicon-shopping-cart">Add to Cart</span> </a>
+				<c:when test="${product.quantity <= 0}">
+					<h6>
+						Qty. Available : <span style="color: red">Out of Stock</span>
+					</h6>
+				</c:when>
+				<c:otherwise>
+					<h6>Qty. Available : ${product.quantity}</h6>
+					<hr />
+				</c:otherwise>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${product.quantity <= 0}">
+					<h6>
+						<a href=" javascript:void(0)" class="btn btn-success disabled">
+							<span class="glyphicon glyphicon-shopping-cart">Add to Cart</span></a>
+					</h6>
+				</c:when>
 				
-			<a href=" ${contextRoot}/show/all/products"
-				class="btn btn-success"><span
+				<c:otherwise>
+					<a href=" ${contextRoot}/cart/add/${product.id}/product"
+						class="btn btn-success"><span
+						class="glyphicon glyphicon-shopping-cart">Add to Cart</span> </a>
+				</c:otherwise>
+			</c:choose>
+			
+			<a href=" ${contextRoot}/show/all/products" class="btn btn-success"><span
 				class="glyphicon glyphicon-shopping-cart">Back</span> </a>
+			
 		</div>
 	</div>
 </div>

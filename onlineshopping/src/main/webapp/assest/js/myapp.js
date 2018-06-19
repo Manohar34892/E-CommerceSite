@@ -28,7 +28,7 @@ $(document).ready(function(){
 		}
 		$('#productListTable').DataTable({
 			lengthMenu:[[3,5,10,-1],['3 Record','5 Record','10 Record','All']],
-			pageLength:5,
+			pageLength:3,
 		ajax:{
 			url:jsonUrl,
 			dataSrc:  ''
