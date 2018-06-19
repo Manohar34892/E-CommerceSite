@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vision.shoppingbackend.dao.ProductDAO;
 import com.vision.shoppingbackend.dto.Product;
 
-@Repository("productDAO")
+@Repository("productDao")
 @Transactional
 public class ProductDaoImpl implements ProductDAO {
 

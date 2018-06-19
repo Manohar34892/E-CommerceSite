@@ -26,10 +26,52 @@ body {
 
 .content {
 	padding-bottom: 10px;
-} 
-.footer{
-	
+}
+
+.footer {
+	position: absolute;
 	bottom: 0px;
 	max-width: 100%;
+}
+.datatableImg{
+	height: 100px;
+	width: 100px;
+}
 
-} 
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+img.img-responsive{
+	height: 400px;
+	width: 400px;
+	
+}
+h3{
+	color: purple;
+}
+h4{
+	color: navy;
+}
+p{
+	color: green;
+}

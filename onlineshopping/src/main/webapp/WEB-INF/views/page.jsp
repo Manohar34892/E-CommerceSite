@@ -23,12 +23,17 @@
 <!-- Java Script -->
 <script type="text/javascript">
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
 </script>
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
 <!-- Bootstrap theme-->
 <link href="${css}/bootstrap-flatly-theme.css" rel="stylesheet">
+
+<!-- Bootstrap Jquey  Data Table  -->
+<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
+
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -51,11 +56,33 @@
 		<c:if test="${userClickContact==true}">
 			<%@include file="contact.jsp"%>
 		</c:if>
+
+		<c:if
+			test="${userClickAllProducts==true or  userClickCategoryProducts==true}">
+			<%@include file="listProduct.jsp"%>
+		</c:if>
+
+		<c:if test="${userClickShowProduct==true}">
+			<%@include file="singleProduct.jsp"%>
+		</c:if>
+
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
-		<!-- Bootstrap core JavaScript -->
+
+		<!-- Jquery -->
 		<script src="${js}/jquery.js"></script>
+
+		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.bundle.min.js"></script>
+
+
+		<!-- Jquery -->
+		<script src="${js}/jquery.dataTables.js"></script>
+		
+		<!-- Jquery Datatable bootstrap-->
+		<script src="${js}/dataTables.bootstrap4.js"></script>
+
+		<!-- add Custom script -->
 		<script src="${js}/myapp.js"></script>
 	</div>
 </body>
