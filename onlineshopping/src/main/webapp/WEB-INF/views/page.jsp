@@ -42,28 +42,46 @@
 
 <body>
 	<div class="wrapper">
-		<!-- Navigation -->
+		<!-- Navigation bar -->
 		<%@include file="./shared/navbar.jsp"%>
 		<!-- Page Content -->
+
+		<!-- link the home page  -->
+
 		<div class="content">
 			<c:if test="${userClickHome==true}">
 				<%@include file="home.jsp"%>
 			</c:if>
 		</div>
+		<!-- link the about page  -->
+
 		<c:if test="${userClickAbout==true}">
 			<%@include file="about.jsp"%>
 		</c:if>
+
+		<!-- link the contact page  -->
+
 		<c:if test="${userClickContact==true}">
 			<%@include file="contact.jsp"%>
 		</c:if>
+
+		<!-- link the list product page  -->
 
 		<c:if
 			test="${userClickAllProducts==true or  userClickCategoryProducts==true}">
 			<%@include file="listProduct.jsp"%>
 		</c:if>
 
+		<!-- link the show single product  page  -->
+
 		<c:if test="${userClickShowProduct==true}">
 			<%@include file="singleProduct.jsp"%>
+		</c:if>
+
+		<!-- link the manage product page  -->
+
+		<c:if test="${userClickManageProduct==true}">
+			<%@include file="manageProduct.jsp"%>
 		</c:if>
 
 		<!-- Footer -->
@@ -78,7 +96,7 @@
 
 		<!-- Jquery -->
 		<script src="${js}/jquery.dataTables.js"></script>
-		
+
 		<!-- Jquery Datatable bootstrap-->
 		<script src="${js}/dataTables.bootstrap4.js"></script>
 

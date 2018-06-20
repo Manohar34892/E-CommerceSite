@@ -6,13 +6,22 @@ $(function() {
 	case 'Contact':
 		$('#contact').addClass('active')
 		break;
-	case 'Services':
-		$('#services').addClass('active')
+	case 'Products':
+		$('#listProducts').addClass('active')
+		break;
+	case 'Manage Products':
+		$('#manageProducts').addClass('active')
 		break;
 	default:
-		$('#home').addClass('active')
+		if(menu='home')break;
+		$('#listProducts').addClass('active');
+		$('#a_'+menu).addClass('active');
 		break;
+		
+		
 	}
+	
+	
 
 })
 $(document).ready(function(){
@@ -64,5 +73,12 @@ $(document).ready(function(){
 				}
 			]
 		});
+	}
+	
+	var $alert=$('.alert')
+	if($alert.length){
+		setTimeout(() => {
+			$alert.fadeOut('slow');
+		}, 1000);
 	}
 })
