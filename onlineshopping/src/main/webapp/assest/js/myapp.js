@@ -66,8 +66,8 @@ $(document).ready(function(){
 					bSortable:false,
 					mRender: function(data, type, row) {
 						var str='';
-						str+='<a href="'+window.contextRoot+'/show/'+data+'/product" class="btn btn-primary"><sapn class="glyphyicon glyphicon-eye-open"></span>View</a> &#160;';
-						str+='<a href="'+window.contextRoot+'/add/cart/'+data+'/product" class="btn btn-success"><sapn class="glyphyicon glyphicon-shopping-cart"></span>Cart</a>';
+						str+='<a href="'+window.contextRoot+'/show/'+data+'/product" class="btn btn-primary"><span class="glyphyicon glyphicon-eye-open"></span>View</a> &#160;';
+						str+='<a href="'+window.contextRoot+'/add/cart/'+data+'/product" class="btn btn-success"><span class="glyphyicon glyphicon-shopping-cart"></span>Cart</a>';
 						return str;
 					}
 				}
@@ -81,4 +81,33 @@ $(document).ready(function(){
 			$alert.fadeOut('slow');
 		}, 1000);
 	}
+	
+	// ----------------Chaeck Box
+	
+	$('.switch input[type="checkbox"]').on('change',function(){
+		var checkbox=$(this);
+		var checked=checkbox.prop('checked');
+		var dMsg=(checked)? 'You Want to active The Product?':
+							'You Want to Deactive The Product?';
+		var value=checkbox.prop('value');
+		bootbox.confirm({
+			size:'medium',
+		    title:"Product Activation & Deactivation?",
+		    message:dMsg ,
+		      
+		   
+		    callback: function (confirmed) {
+		        if(confirmed){
+		    	console.log(value);
+		    	bootbox.alert({
+		    		size:'medium',
+		    				title: "Information",
+		    				message:'You are going to Perform operation' ,
+		    		    	})
+		        }else{
+		        	checkbox.prop('checked',!checked);
+		        }
+		    }
+		});
+	})
 })

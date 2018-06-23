@@ -96,10 +96,15 @@
 
 		<!-- Jquery -->
 		<script src="${js}/jquery.dataTables.js"></script>
+		
+		<!-- Jquery BootBox js-->
+		<script src="${js}/bootbox.min.js"></script>
+		
 
 		<!-- Jquery Datatable bootstrap-->
 		<script src="${js}/dataTables.bootstrap4.js"></script>
-
+		
+		
 		<!-- add Custom script -->
 		<script src="${js}/myapp.js"></script>
 	</div>
