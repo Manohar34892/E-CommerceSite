@@ -93,4 +93,11 @@ String selectlistActiveProductsByCategory="FROM Product WHERE active=:active and
 											.getResultList();
 	}
 
+	@Override
+	public List<Product> list() {
+		
+		return sessionFactory.getCurrentSession()
+				.createQuery("from Product",Product.class).list();
+	}
+
 }

@@ -90,8 +90,15 @@
 								<sf:select class="form-control" path="categoryId"
 									id="categoryId" items="${categories}" itemLabel="name"
 									itemValue="id" />
+								<div class="text-right">
+									<br>
+									<button type="button" data-toggle="modal"
+										data-target="#myCategoryModel" class="btn btn-warning btn-sm">Add
+										Category</button>
+								</div>
 							</div>
 						</div>
+
 						<div class="form-group">
 							<div class="col-md-8" align="center" style="size: 100px;">
 								<input type="submit" name="submit" id="submit" value="Submit"
@@ -125,6 +132,7 @@
 						<th>ID</th>
 						<th>&#160;</th>
 						<th>Name</th>
+						<th>Brand</th>
 						<th>Quantity</th>
 						<th>Unit Price</th>
 						<th>Active</th>
@@ -133,55 +141,13 @@
 
 				</thead>
 
-				<tbody>
-					<tr>
-						<td>4</td>
-						<td><img class="adninDataTableImg" alt="Asus Vivo Notebook"
-							src="${contextRoot}/resources/images/PRD362E573378.jpg"></td>
-						<td>Asus Vivo Notebook</td>
-						<td>4</td>
-						<td>&#8377;27880/-</td>
-						<td>
-							<!--toogle switch  --> <label class="switch"> <input
-								type="checkbox" checked="checked" value="4"> <span
-								class="slider round"></span>
-						</label>
-						</td>
-						<td><a href="${contextRoot}/manage/4/products"
-							class="btn btn-warring"> <span
-								class="glyphicon glypnicon-pencil"></span>
-
-						</a></td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td><img alt="Asus Vivo Notebook"
-							src="${contextRoot}/resources/images/PRD362E573378.jpg"
-							class="adninDataTableImg"></td>
-						<td>Asus Vivo Notebook</td>
-						<td>4</td>
-						<td>&#8377;27880/-</td>
-						<td>
-							<!--toogle switch  --> <label class="switch"> <input
-								type="checkbox" checked="checked" value="4">
-								<div class="slider"></div>
-						</label>
-						</td>
-
-						<td><a href="${contextRoot}/manage/4/products"
-							class="btn btn-primary"> <span
-									class="glyphyicon glyphicon-eye-open"> </span></a></td>
-					</tr>
-
-
-				</tbody>
-
 				<tfoot>
 
 					<tr>
 						<th>ID</th>
 						<th>&#160;</th>
 						<th>Name</th>
+						<th>Brand</th>
 						<th>Quantity</th>
 						<th>Unit Price</th>
 						<th>Active</th>
@@ -191,7 +157,54 @@
 				</tfoot>
 
 			</table>
+			<br> <br>
 		</div>
 
+	</div>
+	<div class="row">
+		<div class="modal fade" id="myCategoryModel" role="dialog"
+			tabindex="-1">
+			<div class="modal-dilog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span>&times;</span>
+						</button>
+						<h4 class="modal-center">Add New Category</h4>
+					</div>
+					<div class="modal-body">
+						<sf:form modelAttribute="category"
+							action="${contextRoot}/manage/products/category" method="POST"
+							class="form-horizontal">
+
+							<div class="form-group">
+								<label for="category_name" class="control-label col-md-4">Category
+									Name</label>
+								<div class="col-md-8">
+									<sf:input path="name" type="text" id="category_name"
+										class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="category_description" class="control-label col-md-4">Category
+									Description</label>
+								<div class="col-md-8">
+									<sf:input path="description" type="text" id="category_description"
+										class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-offset-4 col-md-8">
+									<input type="submit" value="Add Category">
+								</div>
+							</div>
+						</sf:form>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
 	</div>
 </div>

@@ -92,7 +92,7 @@ p {
 	border-bottom-width: thin;
 	border-bottom: 10px;
 	border-color: black;
-	height: 750px;
+	height: 800px;
 }
 
 .panel-heading {
@@ -103,8 +103,8 @@ p {
 }
 
 .adninDataTableImg {
-	height: 30%;
-	width: 30%;
+	height: 100px;
+	width: 100px;
 }
 /* toggle switch*/
 .switch {
@@ -162,3 +162,15 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.adminProductTable{
+	height: 100px;
+	width: 100px;
+}
+.modal{
+	height: 500px;
+	width: 500px;
+	align-self: center;
+	align-self: center;
+	
+} 

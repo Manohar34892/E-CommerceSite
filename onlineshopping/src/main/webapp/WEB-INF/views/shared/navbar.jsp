@@ -20,6 +20,11 @@
 					href="${contextRoot}/contact">Contact</a></li>
 				<li id="manageProducts" class="nav-item"><a class="nav-link"
 					href="${contextRoot}/manage/products">Manage Product</a></li>
+				<li id="SingUp" class="nav-item"><a class="nav-link"
+					href="${contextRoot}/SingUp">Login & Sing Up</a></li>
+				
+				<li id="Login" class="nav-item"><a class="nav-link"
+					href="${contextRoot}/cart/proucts">Cart</a></li>
 			</ul>
 		</div>
 	</div>
