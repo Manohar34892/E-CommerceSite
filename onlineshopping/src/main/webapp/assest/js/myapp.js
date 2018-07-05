@@ -13,7 +13,7 @@ $(function() {
 		$('#manageProducts').addClass('active')
 		break;
 	default:
-		if(menu='home')break;
+		if(menu=='home')break;
 		$('#listProducts').addClass('active');
 		$('#a_'+menu).addClass('active');
 		break;
@@ -66,8 +66,21 @@ $(document).ready(function(){
 					bSortable:false,
 					mRender: function(data, type, row) {
 						var str='';
+						
 						str+='<a href="'+window.contextRoot+'/show/'+data+'/product" class="btn btn-primary"><span class="glyphyicon glyphicon-eye-open"></span>View</a> &#160;';
-						str+='<a href="'+window.contextRoot+'/add/cart/'+data+'/product" class="btn btn-success"><span class="glyphyicon glyphicon-shopping-cart"></span>Cart</a>';
+						
+						if(userRole=='ADMIN'){
+							str+='<a href='+window.contextRoot+'/manage/products/'+data+'/edit  class="btn btn-warring"><span class="glyphicon glyphicon-pencil"></span>Edit</a>';
+						
+						}else{
+						
+						if(row.quantity < 1){
+							str=+'<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphyicon glyphicon-shopping-cart"></span>Cart</a>';
+						}else{
+							
+								str+='<a href="'+window.contextRoot+'/cart/add/'+data+'/product" class="btn btn-success"><span class="glyphyicon glyphicon-shopping-cart"></span>Cart</a>';
+							}
+						}
 						return str;
 					}
 				}
@@ -128,7 +141,7 @@ $(document).ready(function(){
 					bSortable:false,
 					mRender: function(data, type, row) {
 						var str='';
-				//		toogle switch 
+				// toogle switch
 						str+='<label class="switch">'
 							if(data){
 						str+='<input type="checkbox" checked="checked" value="'+row.id+'">'
@@ -145,7 +158,7 @@ $(document).ready(function(){
 					mRender: function(data, type, row) {
 						var str='';
 						str+='<a href='+window.contextRoot+'/manage/products/'+data+'/edit  class="btn btn-warring">';
-						str+=	'<span class="glyphicon glypnicon-pencil">Edit</span> </a>';
+						str+=	'<span class="glyphicon glypnicon-pencil"></span>Edit</a>';
 						return str;
 					}
 				}
@@ -187,6 +200,19 @@ $(document).ready(function(){
 		});
 	}
 	
+	
+	$('button[name="refreshCart"]').click(function(){
+		var cartLineID =$(this).attr('value');
+		var cartElement=$('#count_'+cartLineID)
+		var currentCuont=cartElement.val()
+		
+		
+		var  updateUrl= window.contextRoot+"/cart/"+cartLineID+"/update?count="+currentCuont;
+		window.location.href=updateUrl;
+	}); 
 
 
-})
+	
+});
+/* handling click event  refreshcart services*/
+

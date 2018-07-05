@@ -13,16 +13,15 @@ import com.vision.shoppingbackend.dao.CategoryDAO;
 @ControllerAdvice
 public class GlobalDafaultExceptionHandler {
 
-	private final static Logger logger=LoggerFactory.getLogger(GlobalDafaultExceptionHandler.class);
+	private  static final Logger logger=LoggerFactory.getLogger(GlobalDafaultExceptionHandler.class);
 	@Autowired
 	private CategoryDAO categoryDao;
 	
+	@SuppressWarnings("all")  
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ModelAndView handlerNotFoundException() {
 		ModelAndView mv= new ModelAndView("page");
 		mv.addObject("title", "Home");
-		logger.info("Logger info started");
-		logger.debug("Logger info started");
 		// passing the list of categories
 		mv.addObject("categories",categoryDao.listofitem());
 		mv.addObject("userClickHome", "true");
@@ -30,12 +29,11 @@ public class GlobalDafaultExceptionHandler {
 		
 	}
 	
+	@SuppressWarnings("all")  
 	@ExceptionHandler(ProductNotFoundException.class)
 	public ModelAndView handlerProductNotFoundException() {
 		ModelAndView mv= new ModelAndView("error");
 		mv.addObject("title", "error");
-		logger.info("Logger info started");
-		logger.debug("Logger info started");
 		// passing the list of categories
 		mv.addObject("errortitle", "Something not right");
 		mv.addObject("title", "Produt UnAvailable");
@@ -43,6 +41,7 @@ public class GlobalDafaultExceptionHandler {
 		
 	}
 	
+	/*@SuppressWarnings("all")  
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handlerException(Exception ex) {
 		ModelAndView mv= new ModelAndView("error");
@@ -55,5 +54,5 @@ public class GlobalDafaultExceptionHandler {
 		mv.addObject("title", "Produt UnAvailable");
 		return mv;
 		
-	}
+	}*/
 }

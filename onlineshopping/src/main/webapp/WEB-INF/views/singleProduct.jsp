@@ -1,3 +1,6 @@
+
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <div class="container">
 
 	<div class="row">
@@ -42,20 +45,28 @@
 				<c:when test="${product.quantity <= 0}">
 					<h6>
 						<a href=" javascript:void(0)" class="btn btn-success disabled">
-							<span class="glyphicon glyphicon-shopping-cart">Add to Cart</span></a>
+							<span class="glyphicon glyphicon-shopping-cart">Add to
+								Cart</span>
+						</a>
 					</h6>
 				</c:when>
 				
 				<c:otherwise>
 					<a href=" ${contextRoot}/cart/add/${product.id}/product"
 						class="btn btn-success"><span
-						class="glyphicon glyphicon-shopping-cart">Add to Cart</span> </a>
+						class="glyphicon glyphicon-shopping-cart">AddCart</span> </a>
 				</c:otherwise>
+
 			</c:choose>
-			
+
+			<security:authorize access="hasAuthority('ADMIN')">
+				<a href=" ${contextRoot}/manage/${product.id}/product"
+					class="btn btn-success"><span
+					class="glyphicon glyphicon-shopping-cart">EDIT</span> </a>
+			</security:authorize>
 			<a href=" ${contextRoot}/show/all/products" class="btn btn-success"><span
 				class="glyphicon glyphicon-shopping-cart">Back</span> </a>
-			
+
 		</div>
 	</div>
 </div>

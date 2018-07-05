@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,6 +83,11 @@
 
 		<c:if test="${userClickManageProduct==true}">
 			<%@include file="manageProduct.jsp"%>
+		</c:if>
+		<!-- link the manage product page  -->
+
+		<c:if test="${userClickCart==true}">
+			<%@include file="cart.jsp"%>
 		</c:if>
 
 		<!-- Footer -->

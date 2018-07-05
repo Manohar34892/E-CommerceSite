@@ -12,8 +12,29 @@
 	<properties>
 		<java-version>8.0</java-version>
 		<spring.version>4.3.17.RELEASE</spring.version>
+		<spring.security.version>4.2.7.RELEASE</spring.security.version>
+
 	</properties>
 	<dependencies>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 
 		<!-- Backend Projct -->
 		<dependency>
@@ -27,6 +48,16 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+
+		<!--Spring web flow -->
+
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-webflow</artifactId>
+			<version>2.4.4.RELEASE</version>
+		</dependency>
+
+
 		<!-- Spring core -->
 
 		<dependency>

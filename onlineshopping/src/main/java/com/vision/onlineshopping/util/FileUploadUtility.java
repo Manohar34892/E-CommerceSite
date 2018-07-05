@@ -3,6 +3,7 @@ package com.vision.onlineshopping.util;
 import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -11,6 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadUtility {
 
+	private FileUploadUtility(){
+		throw new IllegalStateException("Utility class");
+	}
 	private static final String ABS_PATH = "F:\\E-Commerce\\E-CommerceSite\\onlineshopping\\src\\main\\webapp\\assest\\images\\";
 
 	private static String REAL_PATH = "";
@@ -18,7 +22,7 @@ public class FileUploadUtility {
 	
 
 	public static void uploadFile(HttpServletRequest request, MultipartFile file, String code) {
-		// TODO Auto-generated method stub
+
 		REAL_PATH = request.getSession().getServletContext().getRealPath("/assest/images");
 		logger.info(REAL_PATH);
 		// to make sure all file are exist are not
@@ -34,12 +38,11 @@ public class FileUploadUtility {
 
 		try {
 			file.transferTo(new File(REAL_PATH + code + ".jpg"));
-			logger.info("File upload"+code+".jpg");
+			
 			file.transferTo(new File(ABS_PATH + code + ".jpg"));
 			logger.info("successfully ");
 		} catch (IOException e) {
-			// TODO: handle exception
-			e.printStackTrace();
+			((ServletContext) logger).log("context", e);
 		}
 	}
 

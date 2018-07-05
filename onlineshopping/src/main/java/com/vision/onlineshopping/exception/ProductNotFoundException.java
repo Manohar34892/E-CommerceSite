@@ -9,7 +9,7 @@ public class ProductNotFoundException extends Exception implements Serializable 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String message;
+	private final String  message;
 
 	public ProductNotFoundException() {
 		this("Something wrong Please try again");

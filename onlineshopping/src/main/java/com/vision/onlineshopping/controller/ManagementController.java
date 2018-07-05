@@ -38,6 +38,7 @@ public class ManagementController {
 	@Autowired
 	private ProductDAO productDao;
 
+	@SuppressWarnings("all")
 	@GetMapping
 	public ModelAndView showManageProducts(@RequestParam(name = "operation", required = false) String operation) {
 		ModelAndView mv = new ModelAndView("page");
@@ -47,12 +48,13 @@ public class ManagementController {
 		nProduct.setActive(true);
 		nProduct.setSupplierid(1);
 
-		if (operation != null) {
+		if (operation != null ) {
 			if (operation.equals("product")) {
 				mv.addObject("message", "Product submited database Successfully");
 			}
 		}
 		mv.addObject("product", nProduct);
+		logger.debug("Pdouct is returned");
 		return mv;
 
 	}
@@ -65,6 +67,7 @@ public class ManagementController {
 		Product nProduct = productDao.get(id);
 
 		mv.addObject("product", nProduct);
+		logger.debug("Pdouct is returned");
 		return mv;
 
 	}
@@ -76,6 +79,7 @@ public class ManagementController {
 		boolean isActive = product.isActive();
 		product.setActive(!product.isActive());
 		productDao.update(product);
+		logger.debug("Pdouct is activated");
 		return (isActive) ? "You are deactive the Product with id" + product.getId()
 				: "You are active the Product with id" + product.getId();
 	}
@@ -94,19 +98,17 @@ public class ManagementController {
 		}
 		if (mProduct.getId() == 0) {
 			productDao.add(mProduct);
+			logger.debug("Pdouct is added");
 		} else {
 			productDao.update(mProduct);
+			logger.debug("Pdouct is updated");
 		}
-		logger.info("file name" + mProduct.getFile().toString() + " " + mProduct.getCode());
 
 		if (!mProduct.getFile().getOriginalFilename().equals("")) {
 
-			logger.info("file name" + mProduct.getFile().toString() + " " + mProduct.getCode());
 			FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
 
 		}
-
-		logger.info(mProduct.toString());
 
 		return "redirect:/manage/products?operation=product";
 	}

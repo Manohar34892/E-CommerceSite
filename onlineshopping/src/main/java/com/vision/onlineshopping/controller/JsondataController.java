@@ -22,20 +22,19 @@ public class JsondataController {
 	@Autowired
 	private ProductDAO productDAO;
 
+	@SuppressWarnings("all")   
 	@RequestMapping(value = "/all/products")
 	@ResponseBody
 	public List<Product> getAllProduct() {
-		logger.debug("debug is started");
-		logger.info("info is started");
-
-		return productDAO.listActiveProducts();
+			logger.debug("debug is started");
+			return productDAO.listActiveProducts();
 	}
 	
 	@GetMapping(value = "admin/all/products")
 	@ResponseBody
 	public List<Product> getAllProductForAdmin() {
 		logger.debug("debug is started");
-		logger.info("info is started");
+	
 
 		return productDAO.list();
 	}
@@ -46,7 +45,7 @@ public class JsondataController {
 	public List<Product> getProductByCategory(@PathVariable int categoryId ) {
 	
 		logger.debug("debug is started");
-		logger.info("info is started");
+		
 
 		return productDAO.listActiveProductsByCategory(categoryId);
 	}
